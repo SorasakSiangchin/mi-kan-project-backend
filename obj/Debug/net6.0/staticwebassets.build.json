@@ -1,0 +1,19 @@
+{
+  "Version": 1,
+  "Hash": "AEkG5DN4mqfbzxo6jtzRzyqN8Q0H8m1iSzSj503SlQI=",
+  "Source": "mi-kan-project-backend",
+  "BasePath": "_content/mi-kan-project-backend",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "mi-kan-project-backend\\wwwroot",
+      "Source": "mi-kan-project-backend",
+      "ContentRoot": "D:\\Development\\ProjectRealThing\\mi-kan-project\\mi-kan-project-backend\\mi-kan-project-backend\\wwwroot\\",
+      "BasePath": "_content/mi-kan-project-backend",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": []
+}
