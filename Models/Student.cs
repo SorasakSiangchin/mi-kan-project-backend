@@ -4,7 +4,7 @@ namespace mi_kan_project_backend.Models
 {
     public class Student
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
         [Required]
         public string FirstName { get; set; }
         [Required]
@@ -13,11 +13,12 @@ namespace mi_kan_project_backend.Models
         public DateTime Birthday { get; set; }
         [Required]
         public string Email { get; set; } 
-
         [Phone]
         public string PhoneNumber { get; set; } = string.Empty;
         public string Address { get; set; } = string.Empty;
-
+        public string IdCard { get; set; } // บัตรประชาชน
+        public string Religion { get; set; } // ศาสนา
+        public string Hobby { get; set; } // งานอดิเรก 
         public int SchoolId { get; set; }
         public int ClassId { get; set; }
         public int ClassRoomId { get; set; }

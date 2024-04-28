@@ -1,5 +1,6 @@
 global using mi_kan_project_backend.Models;
 global using mi_kan_project_backend.Datas;
+global using mi_kan_project_backend.Services.StudentService;
 using Microsoft.EntityFrameworkCore;
 using mi_kan_project_backend.Installers;
 
@@ -30,6 +31,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors(CorsInstaller.MyAllowSpecificOrigins);  
 
 app.UseDefaultFiles();
 
