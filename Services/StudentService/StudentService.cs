@@ -1,14 +1,19 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using mi_kan_project_backend.Services.UploadFileService;
+using Microsoft.EntityFrameworkCore;
 
 namespace mi_kan_project_backend.Services.StudentService
 {
     public class StudentService : IStudentService
     {
         private readonly DataContext _context;
+        private readonly IUploadFileService _uploadFileService;
 
-        public StudentService(DataContext context)
+        public StudentService(
+            DataContext context ,
+            IUploadFileService uploadFileService)
         {
             _context = context;
+            _uploadFileService = uploadFileService;
         }
 
         public async Task Create(Student student)
@@ -17,9 +22,10 @@ namespace mi_kan_project_backend.Services.StudentService
             await _context.SaveChangesAsync();
         }
 
-        public Task DeleteImage(string fileName)
+        public async Task DeleteImage(string fileName)
         {
-            throw new NotImplementedException();
+           await _uploadFileService.DeleteImage(fileName , "student");
+         
         }
 
         public async Task<Student> GetStudent(string id, bool tracked = true)
@@ -41,9 +47,20 @@ namespace mi_kan_project_backend.Services.StudentService
             await _context.SaveChangesAsync();
         }
 
-        public Task<(string errorMessage, string imageName)> UploadImage(IFormFileCollection formFiles)
+        public async Task<(string errorMessage, string imageName)> UploadImage(IFormFileCollection formFiles)
         {
-            throw new NotImplementedException();
+            var errorMessage = string.Empty;
+            //var imageName = new List<string>();
+            var imageName = string.Empty;
+            if (_uploadFileService.IsUpload(formFiles))
+            {
+                errorMessage = _uploadFileService.Validation(formFiles);
+                if (string.IsNullOrEmpty(errorMessage))
+                {
+                    imageName = (await _uploadFileService.UploadImages(formFiles , "student"))[0];
+                }
+            }
+            return (errorMessage, imageName);
         }
     }
 }

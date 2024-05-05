@@ -24,24 +24,20 @@ namespace mi_kan_project_backend.Migrations
 
             modelBuilder.Entity("mi_kan_project_backend.Models.Ability", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<string>("CreatedAt")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedBy")
+                    b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
-                    b.Property<int>("MultipleIntelligencesId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("MultipleIntelligencesId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("SchoolYear")
                         .IsRequired()
@@ -50,15 +46,14 @@ namespace mi_kan_project_backend.Migrations
                     b.Property<int>("Score")
                         .HasColumnType("int");
 
-                    b.Property<int>("StudentId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("StudentId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("UpdatedAt")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("UpdatedBy")
+                    b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -71,102 +66,138 @@ namespace mi_kan_project_backend.Migrations
 
             modelBuilder.Entity("mi_kan_project_backend.Models.Class", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    b.Property<string>("ClassNameEn")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ClassName")
+                    b.Property<string>("ClassNameTh")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CreatedAt")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CreatedBy")
+                    b.Property<DateTime?>("CreatedBy")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
                     b.Property<string>("UpdatedAt")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("UpdatedBy")
+                    b.Property<DateTime?>("UpdatedBy")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
                     b.ToTable("Classes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("0b91244a-9087-45a5-a80a-9d4c88bb091d"),
+                            ClassNameTh = "1",
+                            CreatedBy = new DateTime(2024, 5, 5, 11, 39, 21, 240, DateTimeKind.Local).AddTicks(7076),
+                            IsActive = true
+                        },
+                        new
+                        {
+                            Id = new Guid("1124cf5a-6d96-4a05-844c-8a3a80c8e81c"),
+                            ClassNameTh = "2",
+                            CreatedBy = new DateTime(2024, 5, 5, 11, 39, 21, 240, DateTimeKind.Local).AddTicks(7087),
+                            IsActive = true
+                        });
                 });
 
             modelBuilder.Entity("mi_kan_project_backend.Models.ClassRoom", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    b.Property<string>("ClassRoomNameEn")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ClassRoomName")
+                    b.Property<string>("ClassRoomNameTh")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("CreatedAt")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CreatedBy")
+                    b.Property<DateTime?>("CreatedBy")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
                     b.Property<string>("UpdatedAt")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("UpdatedBy")
+                    b.Property<DateTime?>("UpdatedBy")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
                     b.ToTable("ClassRooms");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("cf7e4c43-1c38-4251-9b68-d319eb963d19"),
+                            ClassRoomNameTh = "1",
+                            CreatedBy = new DateTime(2024, 5, 5, 11, 39, 21, 240, DateTimeKind.Local).AddTicks(7171),
+                            IsActive = true
+                        },
+                        new
+                        {
+                            Id = new Guid("a41d7d77-f753-41c7-8398-d63517a0dee3"),
+                            ClassRoomNameTh = "2",
+                            CreatedBy = new DateTime(2024, 5, 5, 11, 39, 21, 240, DateTimeKind.Local).AddTicks(7173),
+                            IsActive = true
+                        });
                 });
 
             modelBuilder.Entity("mi_kan_project_backend.Models.Gender", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    b.Property<string>("GenderNameEn")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("GenderName")
+                    b.Property<string>("GenderNameTh")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Genders");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("62d17cf4-9130-4c0d-b7b7-66e6bc11079c"),
+                            GenderNameTh = "ชาย"
+                        },
+                        new
+                        {
+                            Id = new Guid("99ea90e8-c8ef-45e2-86f4-0ce3df6660e1"),
+                            GenderNameTh = "หญิง"
+                        });
                 });
 
             modelBuilder.Entity("mi_kan_project_backend.Models.MultipleIntelligences", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CreatedAt")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CreatedBy")
+                    b.Property<DateTime?>("CreatedBy")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
@@ -177,10 +208,9 @@ namespace mi_kan_project_backend.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UpdatedAt")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("UpdatedBy")
+                    b.Property<DateTime?>("UpdatedBy")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -190,11 +220,12 @@ namespace mi_kan_project_backend.Migrations
 
             modelBuilder.Entity("mi_kan_project_backend.Models.Role", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    b.Property<string>("RoleCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("RoleName")
                         .IsRequired()
@@ -203,15 +234,26 @@ namespace mi_kan_project_backend.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Roles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("e82d41dd-1060-4953-9992-ac328e07e8e1"),
+                            RoleCode = "admin",
+                            RoleName = "ผู้ดูแลระบบ"
+                        },
+                        new
+                        {
+                            Id = new Guid("7789c1b7-d8a8-484f-976b-f1d84c96e577"),
+                            RoleCode = "teacher",
+                            RoleName = "คุณครู"
+                        });
                 });
 
             modelBuilder.Entity("mi_kan_project_backend.Models.School", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -234,7 +276,10 @@ namespace mi_kan_project_backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("SchoolName")
+                    b.Property<string>("SchoolNameEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SchoolNameTh")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -247,49 +292,82 @@ namespace mi_kan_project_backend.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Schools");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("c3e93ba4-c4ef-40a5-8d1b-cc80f6dc8cf6"),
+                            Address = "Address 1",
+                            CreatedBy = new DateTime(2024, 5, 5, 11, 39, 21, 240, DateTimeKind.Local).AddTicks(7215),
+                            Email = "school01@gmail.com",
+                            IsActive = true,
+                            PhoneNumber = "0666666666",
+                            SchoolNameTh = "โรงเรียน 1"
+                        },
+                        new
+                        {
+                            Id = new Guid("7ceed84b-0e3f-4d85-aeeb-ef92f1e8be38"),
+                            Address = "Address 2",
+                            CreatedBy = new DateTime(2024, 5, 5, 11, 39, 21, 240, DateTimeKind.Local).AddTicks(7218),
+                            Email = "school02@gmail.com",
+                            IsActive = true,
+                            PhoneNumber = "0777777777",
+                            SchoolNameTh = "โรงเรียน 2"
+                        });
                 });
 
             modelBuilder.Entity("mi_kan_project_backend.Models.SchoolYear", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CreatedAt")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CreatedBy")
+                    b.Property<DateTime?>("CreatedBy")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
-                    b.Property<string>("SchoolYearName")
+                    b.Property<string>("SchoolYearNameEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("SchoolYearNameTh")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UpdatedAt")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("UpdatedBy")
+                    b.Property<DateTime?>("UpdatedBy")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
                     b.ToTable("SchoolYears");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("6122db77-715b-45fc-b1cf-255b06d53549"),
+                            CreatedBy = new DateTime(2024, 5, 5, 11, 39, 21, 240, DateTimeKind.Local).AddTicks(7228),
+                            IsActive = true,
+                            SchoolYearNameTh = "ปีการศึกษา 1"
+                        },
+                        new
+                        {
+                            Id = new Guid("d414ae8f-37ac-46e0-bb32-ca52aff65c25"),
+                            CreatedBy = new DateTime(2024, 5, 5, 11, 39, 21, 240, DateTimeKind.Local).AddTicks(7229),
+                            IsActive = true,
+                            SchoolYearNameTh = "ปีการศึกษา 2"
+                        });
                 });
 
             modelBuilder.Entity("mi_kan_project_backend.Models.Student", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Address")
                         .IsRequired()
@@ -298,18 +376,17 @@ namespace mi_kan_project_backend.Migrations
                     b.Property<DateTime>("Birthday")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("ClassId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("ClassId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("ClassRoomId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("ClassRoomId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("CreatedAt")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedBy")
+                    b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -319,8 +396,8 @@ namespace mi_kan_project_backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("GenderId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("GenderId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Hobby")
                         .IsRequired()
@@ -349,21 +426,20 @@ namespace mi_kan_project_backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("SchoolId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("SchoolId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("SchoolYearId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("SchoolYearId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("TermId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("TermId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("UpdatedAt")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("UpdatedBy")
+                    b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -384,51 +460,61 @@ namespace mi_kan_project_backend.Migrations
 
             modelBuilder.Entity("mi_kan_project_backend.Models.Term", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CreatedAt")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CreatedBy")
+                    b.Property<DateTime?>("CreatedBy")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
-                    b.Property<string>("TermName")
+                    b.Property<string>("TermNameEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TermNameTh")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UpdatedAt")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("UpdatedBy")
+                    b.Property<DateTime?>("UpdatedBy")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 
                     b.ToTable("Terms");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("8fa58d00-5c34-4263-bd44-4961d04a8a52"),
+                            CreatedBy = new DateTime(2024, 5, 5, 11, 39, 21, 240, DateTimeKind.Local).AddTicks(7242),
+                            IsActive = true,
+                            TermNameTh = "เทอม 1"
+                        },
+                        new
+                        {
+                            Id = new Guid("4a2f3794-e971-4155-bdf4-7306c22d188c"),
+                            CreatedBy = new DateTime(2024, 5, 5, 11, 39, 21, 240, DateTimeKind.Local).AddTicks(7244),
+                            IsActive = true,
+                            TermNameTh = "เทอม 2"
+                        });
                 });
 
             modelBuilder.Entity("mi_kan_project_backend.Models.Training", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CreatedAt")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CreatedBy")
+                    b.Property<DateTime?>("CreatedBy")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("EndDate")
@@ -444,22 +530,24 @@ namespace mi_kan_project_backend.Migrations
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("TrainingCategoryId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("TrainingCategoryId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("TrainingName")
+                    b.Property<string>("TrainingNameEn")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("TrainingNameTh")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UpdatedAt")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("UpdatedBy")
+                    b.Property<DateTime?>("UpdatedBy")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -472,17 +560,13 @@ namespace mi_kan_project_backend.Migrations
 
             modelBuilder.Entity("mi_kan_project_backend.Models.TrainingCategory", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CreatedAt")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CreatedBy")
+                    b.Property<DateTime?>("CreatedBy")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsActive")
@@ -493,10 +577,9 @@ namespace mi_kan_project_backend.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UpdatedAt")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("UpdatedBy")
+                    b.Property<DateTime?>("UpdatedBy")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
@@ -506,17 +589,13 @@ namespace mi_kan_project_backend.Migrations
 
             modelBuilder.Entity("mi_kan_project_backend.Models.User", b =>
                 {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CreatedAt")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("CreatedBy")
+                    b.Property<DateTime?>("CreatedBy")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
@@ -542,17 +621,16 @@ namespace mi_kan_project_backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("RoleId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("RoleId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("SchoolId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("SchoolId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("UpdatedAt")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateTime>("UpdatedBy")
+                    b.Property<DateTime?>("UpdatedBy")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");

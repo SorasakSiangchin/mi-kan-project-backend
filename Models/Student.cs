@@ -1,9 +1,13 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace mi_kan_project_backend.Models
 {
     public class Student
     {
+        [Key]
+        [Required]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public Guid Id { get; set; } = Guid.NewGuid();
         [Required]
         public string FirstName { get; set; }
@@ -19,17 +23,17 @@ namespace mi_kan_project_backend.Models
         public string IdCard { get; set; } // บัตรประชาชน
         public string Religion { get; set; } // ศาสนา
         public string Hobby { get; set; } // งานอดิเรก 
-        public int SchoolId { get; set; }
-        public int ClassId { get; set; }
-        public int ClassRoomId { get; set; }
-        public int SchoolYearId { get; set; }
-        public int TermId { get; set; }
-        public int GenderId { get; set; }
+        public Guid SchoolId { get; set; }
+        public Guid ClassId { get; set; }
+        public Guid ClassRoomId { get; set; }
+        public Guid SchoolYearId { get; set; }
+        public Guid TermId { get; set; }
+        public Guid GenderId { get; set; }
 
-        public string CreatedAt { get; set; } = string.Empty;
-        public DateTime CreatedBy { get; set; } = DateTime.Now;
-        public string UpdatedAt { get; set; } = string.Empty;
-        public DateTime UpdatedBy { get; set; }
+        public DateTime? CreatedAt { get; set; } = DateTime.Now;
+        public string? CreatedBy { get; set; } 
+        public DateTime? UpdatedAt { get; set; } 
+        public string? UpdatedBy { get; set; }
         public bool IsActive { get; set; } = true;
 
         public School School { get; set; }

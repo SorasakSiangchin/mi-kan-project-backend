@@ -1,12 +1,21 @@
 global using mi_kan_project_backend.Models;
 global using mi_kan_project_backend.Datas;
 global using mi_kan_project_backend.Services.StudentService;
+global using mi_kan_project_backend.Dtos.School;
+global using mi_kan_project_backend.Dtos.SchoolYear;
+global using mi_kan_project_backend.Services.SchoolYearService;
+global using mi_kan_project_backend.Dtos.Class;
+global using mi_kan_project_backend.Dtos.ClassRoom;
+global using mi_kan_project_backend.Dtos.Gender;
+global using mi_kan_project_backend.Dtos.Term;
 using Microsoft.EntityFrameworkCore;
 using mi_kan_project_backend.Installers;
+using mi_kan_project_backend;
+using AutoMapper;
 
 var builder = WebApplication.CreateBuilder(args);
-
 builder.Services.MyInstallerExtensions(builder);
+builder.Services.AddAutoMapper(typeof(MappingConfig));
 
 var app = builder.Build();
 
@@ -32,7 +41,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseCors(CorsInstaller.MyAllowSpecificOrigins);  
+app.UseCors(CorsInstaller.MyAllowSpecificOrigins);
 
 app.UseDefaultFiles();
 

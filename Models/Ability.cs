@@ -1,23 +1,32 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace mi_kan_project_backend.Models
 {
     public class Ability
     {
-        public int Id { get; set; }
+        [Key]
+        [Required]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public Guid Id { get; set; } = Guid.NewGuid();
 
-        public int StudentId { get; set; } // นักเรียน
-        public int MultipleIntelligencesId { get; set; } // พหุปัญญา
+        public Guid MultipleIntelligencesId { get; set; } // พหุปัญญา
         public string SchoolYear { get; set; } // ปีการศึกษา
         public int Score { get; set; }
-        public string CreatedAt { get; set; } = string.Empty;
-        public DateTime CreatedBy { get; set; } = DateTime.Now;
-        public string UpdatedAt { get; set; } = string.Empty;
-        public DateTime UpdatedBy { get; set; }
+        public DateTime? CreatedAt { get; set; } = DateTime.Now;
+        public string? CreatedBy { get; set; }
+        public DateTime? UpdatedAt { get; set; }
+        public string? UpdatedBy { get; set; }
         public bool IsActive { get; set; } = true;
+        public Guid StudentId { get; set; } // นักเรียน
+
+        [ForeignKey("StudentId")]
+        [ValidateNever]
+        public Student Student { get; set; }
 
         public MultipleIntelligences MultipleIntelligences { get; set; }
-        public Student Student { get; set; }
+ 
 
 
     }

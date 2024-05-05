@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "AEkG5DN4mqfbzxo6jtzRzyqN8Q0H8m1iSzSj503SlQI=",
+  "Hash": "BECkeivavkZQiN5vPLVF4fYCdSmc8mpQRFwQnRnfFKE=",
   "Source": "mi-kan-project-backend",
   "BasePath": "_content/mi-kan-project-backend",
   "Mode": "Default",
@@ -15,5 +15,23 @@
       "Pattern": "**"
     }
   ],
-  "Assets": []
+  "Assets": [
+    {
+      "Identity": "D:\\Development\\ProjectRealThing\\mi-kan-project\\mi-kan-project-backend\\mi-kan-project-backend\\wwwroot\\images\\student\\403b62d5-124a-472b-8f83-327dc962f9bb.png",
+      "SourceId": "mi-kan-project-backend",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Development\\ProjectRealThing\\mi-kan-project\\mi-kan-project-backend\\mi-kan-project-backend\\wwwroot\\",
+      "BasePath": "_content/mi-kan-project-backend",
+      "RelativePath": "images/student/403b62d5-124a-472b-8f83-327dc962f9bb.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\student\\403b62d5-124a-472b-8f83-327dc962f9bb.png"
+    }
+  ]
 }

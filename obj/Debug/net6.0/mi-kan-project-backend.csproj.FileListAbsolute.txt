@@ -67,3 +67,8 @@ D:\Development\ProjectRealThing\mi-kan-project\mi-kan-project-backend\mi-kan-pro
 D:\Development\ProjectRealThing\mi-kan-project\mi-kan-project-backend\mi-kan-project-backend\obj\Debug\net6.0\mi-kan-project-backend.pdb
 D:\Development\ProjectRealThing\mi-kan-project\mi-kan-project-backend\mi-kan-project-backend\obj\Debug\net6.0\mi-kan-project-backend.genruntimeconfig.cache
 D:\Development\ProjectRealThing\mi-kan-project\mi-kan-project-backend\mi-kan-project-backend\obj\Debug\net6.0\ref\mi-kan-project-backend.dll
+D:\Development\ProjectRealThing\mi-kan-project\mi-kan-project-backend\mi-kan-project-backend\bin\Debug\net6.0\AutoMapper.dll
+D:\Development\ProjectRealThing\mi-kan-project\mi-kan-project-backend\mi-kan-project-backend\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\Development\ProjectRealThing\mi-kan-project\mi-kan-project-backend\mi-kan-project-backend\bin\Debug\net6.0\Microsoft.DotNet.PlatformAbstractions.dll
+D:\Development\ProjectRealThing\mi-kan-project\mi-kan-project-backend\mi-kan-project-backend\bin\Debug\net6.0\Microsoft.Extensions.DependencyModel.dll
+D:\Development\ProjectRealThing\mi-kan-project\mi-kan-project-backend\mi-kan-project-backend\bin\Debug\net6.0\Newtonsoft.Json.dll
