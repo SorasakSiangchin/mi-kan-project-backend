@@ -12,6 +12,8 @@ namespace mi_kan_project_backend
             CreateMap<UpdateStudentDto, Student>().ReverseMap();
 
             CreateMap<SchoolResponseDto, School>().ReverseMap();
+
+            CreateMap<RegisterRequestDto, User>().ReverseMap();
         }
     }
 }

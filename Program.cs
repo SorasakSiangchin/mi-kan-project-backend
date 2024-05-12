@@ -8,6 +8,7 @@ global using mi_kan_project_backend.Dtos.Class;
 global using mi_kan_project_backend.Dtos.ClassRoom;
 global using mi_kan_project_backend.Dtos.Gender;
 global using mi_kan_project_backend.Dtos.Term;
+global using mi_kan_project_backend.Dtos.User;
 using Microsoft.EntityFrameworkCore;
 using mi_kan_project_backend.Installers;
 using mi_kan_project_backend;
@@ -48,6 +49,8 @@ app.UseDefaultFiles();
 app.UseStaticFiles();
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseRouting();
 

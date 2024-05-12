@@ -16,6 +16,8 @@ namespace mi_kan_project_backend.Models
         public string ImageUrl { get; set; } = string.Empty;
         [Required]
         public string Email { get; set; }
+        [Required]
+        public string Password { get; set; }
 
         [Required]
         public string PhoneNumber { get; set; } 
@@ -26,7 +28,6 @@ namespace mi_kan_project_backend.Models
         public string? UpdatedAt { get; set; }
         public DateTime? UpdatedBy { get; set; }
         public bool IsActive { get; set; } = true;
-
         public Role Role { get; set; }
         public School School { get; set; }
     }
