@@ -1,4 +1,5 @@
-﻿using mi_kan_project_backend.Services.UploadFileService;
+﻿using mi_kan_project_backend.AppHelper;
+using mi_kan_project_backend.Services.UploadFileService;
 using mi_kan_project_backend.Settings;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using Microsoft.EntityFrameworkCore;
@@ -6,7 +7,6 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
-using System.Security.Principal;
 using System.Text;
 
 
@@ -58,6 +58,13 @@ namespace mi_kan_project_backend.Services.UserService
                 var result = await _context.Users.SingleOrDefaultAsync(e => e.Email == user.Email);
                 if (result != null) throw new Exception("Existing Account");
                 user.Password = CreateHashPassword(user.Password);
+
+                user.RoleId = (await _context
+                    .Roles
+                    .AsNoTracking()
+                    .SingleOrDefaultAsync(e => e.RoleCode == RoleCode.Admin))
+                    .Id;
+
                 await _context.Users.AddAsync(user);
                 await _context.SaveChangesAsync();
             }
@@ -123,8 +130,16 @@ namespace mi_kan_project_backend.Services.UserService
                     new Claim[]
                     {
                         new Claim(ClaimTypes.NameIdentifier , user.Id.ToString()),
-                        new Claim(ClaimTypes.Name ,user.Email),
-                        new Claim(ClaimTypes.Role , user.Role.RoleName)
+                        new Claim(ClaimTypes.Email ,user.Email),
+                        new Claim(ClaimTypes.Role , user.Role.RoleName),
+                        new Claim("roleid" , user.Role.Id.ToString()),
+                        new Claim("imageurl" , user.ImageUrl),
+                        new Claim("firstname" , user.FirstName),
+                        new Claim("lastname" , user.LastName),
+                        new Claim("phonenumber" , user.PhoneNumber),
+                        new Claim("schoolid" , user.SchoolId.ToString()),
+                        new Claim("schoolnameth" , user.School.SchoolNameTh),
+
                     }),
                 Expires = expires,
                 Audience= _jwtSetting.Audience,
@@ -163,15 +178,43 @@ namespace mi_kan_project_backend.Services.UserService
 
         
             var id = token.Claims.First(claim => claim.Type == "nameid").Value;
-            
-            var role = token.Claims.First(claim => claim.Type == "role").Value;
+
+            var email = token.Claims.First(claim => claim.Type == "email").Value;
+
+            var roleName = token.Claims.First(claim => claim.Type == "role").Value;
+
+            var roleId = token.Claims.First(claim => claim.Type == "roleid").Value;
+
+            var imageUrl = token.Claims.First(claim => claim.Type == "imageurl").Value;
+
+            var firstName = token.Claims.First(claim => claim.Type == "firstname").Value;
+
+            var lastName = token.Claims.First(claim => claim.Type == "lastname").Value;
+
+            var phoneNumber = token.Claims.First(claim => claim.Type == "phonenumber").Value;
+
+            var schoolId = token.Claims.First(claim => claim.Type == "schoolid").Value;
+
+            var schoolNameTh = token.Claims.First(claim => claim.Type == "schoolnameth").Value;
 
             var account = new User
             {
                 Id = Guid.Parse(id),
+                Email = email,
+                ImageUrl = imageUrl,
+                FirstName = firstName,
+                LastName = lastName,
+                PhoneNumber = phoneNumber,
+                SchoolId = Guid.Parse(schoolId),
+                School = new School
+                {
+                    Id = Guid.Parse(schoolId),
+                    SchoolNameTh = schoolNameTh
+                },
                 Role = new Role
                 {
-                    RoleName = role,
+                    Id = Guid.Parse(roleId),
+                    RoleName = roleName
                 }
             };
 

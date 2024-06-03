@@ -12,8 +12,8 @@ using mi_kan_project_backend.Datas;
 namespace mi_kan_project_backend.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20240512044929_AddPasswordFieldInUserEntity")]
-    partial class AddPasswordFieldInUserEntity
+    [Migration("20240518133742_CreateDB")]
+    partial class CreateDB
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -78,20 +78,20 @@ namespace mi_kan_project_backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CreatedAt")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("CreatedBy")
+                    b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
-                    b.Property<string>("UpdatedAt")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("UpdatedBy")
+                    b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -100,16 +100,16 @@ namespace mi_kan_project_backend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("bb57c605-a22f-46b7-8462-3969864b91f1"),
+                            Id = new Guid("d259fce9-1a8d-4bce-8758-37fc0189f8e6"),
                             ClassNameTh = "1",
-                            CreatedBy = new DateTime(2024, 5, 12, 11, 49, 28, 483, DateTimeKind.Local).AddTicks(3216),
+                            CreatedAt = new DateTime(2024, 5, 18, 20, 37, 42, 185, DateTimeKind.Local).AddTicks(4836),
                             IsActive = true
                         },
                         new
                         {
-                            Id = new Guid("3482f085-1120-49a8-a6c6-8cda51f3ed42"),
+                            Id = new Guid("f3355f53-1d76-4092-8315-a2e65ca7fe94"),
                             ClassNameTh = "2",
-                            CreatedBy = new DateTime(2024, 5, 12, 11, 49, 28, 483, DateTimeKind.Local).AddTicks(3246),
+                            CreatedAt = new DateTime(2024, 5, 18, 20, 37, 42, 185, DateTimeKind.Local).AddTicks(4852),
                             IsActive = true
                         });
                 });
@@ -126,20 +126,20 @@ namespace mi_kan_project_backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CreatedAt")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("CreatedBy")
+                    b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
-                    b.Property<string>("UpdatedAt")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("UpdatedBy")
+                    b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -148,16 +148,16 @@ namespace mi_kan_project_backend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("4049aba5-3396-46e6-bbe8-9f32666b9af5"),
+                            Id = new Guid("66a933ca-2d15-4407-b0c4-5311fe8a5b2c"),
                             ClassRoomNameTh = "1",
-                            CreatedBy = new DateTime(2024, 5, 12, 11, 49, 28, 483, DateTimeKind.Local).AddTicks(3420),
+                            CreatedAt = new DateTime(2024, 5, 18, 20, 37, 42, 185, DateTimeKind.Local).AddTicks(4968),
                             IsActive = true
                         },
                         new
                         {
-                            Id = new Guid("a1f88413-6583-42be-90e3-f04f52c19f02"),
+                            Id = new Guid("2747d6a6-c58e-4d82-9c76-e17971965921"),
                             ClassRoomNameTh = "2",
-                            CreatedBy = new DateTime(2024, 5, 12, 11, 49, 28, 483, DateTimeKind.Local).AddTicks(3423),
+                            CreatedAt = new DateTime(2024, 5, 18, 20, 37, 42, 185, DateTimeKind.Local).AddTicks(4970),
                             IsActive = true
                         });
                 });
@@ -181,12 +181,12 @@ namespace mi_kan_project_backend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("87185e70-67b2-4f1c-90c7-a4569acfa968"),
+                            Id = new Guid("dfc2f95f-a22a-4c77-a500-9afdabb13529"),
                             GenderNameTh = "ชาย"
                         },
                         new
                         {
-                            Id = new Guid("10c89d4e-097f-43e4-930d-7e575e400909"),
+                            Id = new Guid("1bc9f8ef-d9aa-40a9-98ee-4ca146d807cb"),
                             GenderNameTh = "หญิง"
                         });
                 });
@@ -196,11 +196,11 @@ namespace mi_kan_project_backend.Migrations
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("CreatedAt")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("CreatedBy")
+                    b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -209,11 +209,11 @@ namespace mi_kan_project_backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UpdatedAt")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("UpdatedBy")
+                    b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -240,13 +240,13 @@ namespace mi_kan_project_backend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("867f8d12-2e5b-4f60-b251-7b30cfb74879"),
+                            Id = new Guid("fd7b2ecf-6652-456c-9fee-6c0df9c09c74"),
                             RoleCode = "admin",
                             RoleName = "ผู้ดูแลระบบ"
                         },
                         new
                         {
-                            Id = new Guid("68fa4b1c-ec54-4417-9aa5-4b73702e8158"),
+                            Id = new Guid("62bafb8f-84df-4850-970f-f47ddc557787"),
                             RoleCode = "teacher",
                             RoleName = "คุณครู"
                         });
@@ -261,11 +261,11 @@ namespace mi_kan_project_backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CreatedAt")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("CreatedBy")
+                    b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -285,11 +285,11 @@ namespace mi_kan_project_backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UpdatedAt")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("UpdatedBy")
+                    b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -298,9 +298,9 @@ namespace mi_kan_project_backend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("ee103e28-c40d-4245-b81e-56f26b4d59d0"),
+                            Id = new Guid("4ffa2268-9b08-4d19-89b2-c05f5ba4ca22"),
                             Address = "Address 1",
-                            CreatedBy = new DateTime(2024, 5, 12, 11, 49, 28, 483, DateTimeKind.Local).AddTicks(3481),
+                            CreatedAt = new DateTime(2024, 5, 18, 20, 37, 42, 185, DateTimeKind.Local).AddTicks(5019),
                             Email = "school01@gmail.com",
                             IsActive = true,
                             PhoneNumber = "0666666666",
@@ -308,9 +308,9 @@ namespace mi_kan_project_backend.Migrations
                         },
                         new
                         {
-                            Id = new Guid("53674b85-9308-458c-b8f0-a72c0eced83c"),
+                            Id = new Guid("ccf7ce31-3e0e-41f6-aa3e-e9d1c1e52126"),
                             Address = "Address 2",
-                            CreatedBy = new DateTime(2024, 5, 12, 11, 49, 28, 483, DateTimeKind.Local).AddTicks(3485),
+                            CreatedAt = new DateTime(2024, 5, 18, 20, 37, 42, 185, DateTimeKind.Local).AddTicks(5021),
                             Email = "school02@gmail.com",
                             IsActive = true,
                             PhoneNumber = "0777777777",
@@ -323,11 +323,11 @@ namespace mi_kan_project_backend.Migrations
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("CreatedAt")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("CreatedBy")
+                    b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -339,11 +339,11 @@ namespace mi_kan_project_backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UpdatedAt")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("UpdatedBy")
+                    b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -352,15 +352,15 @@ namespace mi_kan_project_backend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("6d62ebaf-896e-4f6e-be26-b8e66055c93b"),
-                            CreatedBy = new DateTime(2024, 5, 12, 11, 49, 28, 483, DateTimeKind.Local).AddTicks(3503),
+                            Id = new Guid("ef3c8246-35d8-4b08-9ad5-ef7f70cb0337"),
+                            CreatedAt = new DateTime(2024, 5, 18, 20, 37, 42, 185, DateTimeKind.Local).AddTicks(5037),
                             IsActive = true,
                             SchoolYearNameTh = "ปีการศึกษา 1"
                         },
                         new
                         {
-                            Id = new Guid("2c28703e-492d-4a81-bab1-51315c57a1af"),
-                            CreatedBy = new DateTime(2024, 5, 12, 11, 49, 28, 483, DateTimeKind.Local).AddTicks(3505),
+                            Id = new Guid("f8307230-95aa-4b4f-91a5-d1910eb2da38"),
+                            CreatedAt = new DateTime(2024, 5, 18, 20, 37, 42, 185, DateTimeKind.Local).AddTicks(5038),
                             IsActive = true,
                             SchoolYearNameTh = "ปีการศึกษา 2"
                         });
@@ -465,11 +465,11 @@ namespace mi_kan_project_backend.Migrations
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("CreatedAt")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("CreatedBy")
+                    b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -481,11 +481,11 @@ namespace mi_kan_project_backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UpdatedAt")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("UpdatedBy")
+                    b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -494,15 +494,15 @@ namespace mi_kan_project_backend.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("d7a3fa32-0a17-47a8-b64c-404b5c8e2e93"),
-                            CreatedBy = new DateTime(2024, 5, 12, 11, 49, 28, 483, DateTimeKind.Local).AddTicks(3521),
+                            Id = new Guid("835079e8-5f10-42f6-bae7-67fdbbb72811"),
+                            CreatedAt = new DateTime(2024, 5, 18, 20, 37, 42, 185, DateTimeKind.Local).AddTicks(5048),
                             IsActive = true,
                             TermNameTh = "เทอม 1"
                         },
                         new
                         {
-                            Id = new Guid("0b03d678-bcd0-49c5-88c9-59b096cdeb06"),
-                            CreatedBy = new DateTime(2024, 5, 12, 11, 49, 28, 483, DateTimeKind.Local).AddTicks(3523),
+                            Id = new Guid("211fbbaa-a7a8-4cf3-a8be-f96027527ad0"),
+                            CreatedAt = new DateTime(2024, 5, 18, 20, 37, 42, 185, DateTimeKind.Local).AddTicks(5050),
                             IsActive = true,
                             TermNameTh = "เทอม 2"
                         });
@@ -513,11 +513,11 @@ namespace mi_kan_project_backend.Migrations
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("CreatedAt")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("CreatedBy")
+                    b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
@@ -542,11 +542,11 @@ namespace mi_kan_project_backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UpdatedAt")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("UpdatedBy")
+                    b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("UserId")
                         .HasColumnType("uniqueidentifier");
@@ -565,11 +565,11 @@ namespace mi_kan_project_backend.Migrations
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("CreatedAt")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("CreatedBy")
+                    b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
@@ -578,11 +578,11 @@ namespace mi_kan_project_backend.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UpdatedAt")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("UpdatedBy")
+                    b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -594,11 +594,11 @@ namespace mi_kan_project_backend.Migrations
                     b.Property<Guid>("Id")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("CreatedAt")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("CreatedBy")
+                    b.Property<DateTime?>("CreatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -633,11 +633,11 @@ namespace mi_kan_project_backend.Migrations
                     b.Property<Guid>("SchoolId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("UpdatedAt")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("UpdatedBy")
+                    b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("UpdatedBy")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

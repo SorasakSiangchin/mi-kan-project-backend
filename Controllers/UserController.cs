@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using mi_kan_project_backend.Models;
 using mi_kan_project_backend.Services.UserService;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
@@ -28,7 +27,7 @@ namespace mi_kan_project_backend.Controllers
                 {
                     response.Success = false;
                     response.Message = "ไม่มีผู้ใช้งานนี้";
-                    return NotFound(response);
+                    return BadRequest(response);
                 };
 
                 var tokent = _userService.GenerateToken(result);
@@ -36,7 +35,7 @@ namespace mi_kan_project_backend.Controllers
                 response.Data = new LoginReponseDto
                 {
                     Token = tokent,
-                    User = result
+                    User = _mapper.Map<UserResponseDto>(result) 
                 };
 
                 return Ok(response);
@@ -64,7 +63,7 @@ namespace mi_kan_project_backend.Controllers
                     response.Message = errorMessage;
                     return BadRequest(response);
                 }
-
+                
                 var user = _mapper.Map<User>(register);
                 user.ImageUrl = imageName;
 
@@ -83,9 +82,9 @@ namespace mi_kan_project_backend.Controllers
         }
 
         [HttpGet("[action]")]
-        public async Task<ActionResult<ServiceResponse<InfoResponseDto>>> Info()
+        public async Task<ActionResult<ServiceResponse<UserResponseDto>>> Info()
         {
-            var response = new ServiceResponse<InfoResponseDto>();
+            var response = new ServiceResponse<UserResponseDto>();
             try
             {
                 var accessToken = await HttpContext.GetTokenAsync("access_token");
@@ -93,11 +92,7 @@ namespace mi_kan_project_backend.Controllers
 
                 var account = _userService.GetInfo(accessToken);
 
-                response.Data = new InfoResponseDto
-                {
-                    Id = account.Id.ToString() ,
-                    Role = account.Role ,
-                };
+                response.Data =  _mapper.Map<UserResponseDto>(account);
 
                 return Ok(response);
             }

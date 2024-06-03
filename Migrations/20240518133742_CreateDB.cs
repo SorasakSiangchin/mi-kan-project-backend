@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace mi_kan_project_backend.Migrations
 {
-    public partial class CreateDatabase : Migration
+    public partial class CreateDB : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -16,10 +16,10 @@ namespace mi_kan_project_backend.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ClassNameTh = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ClassNameEn = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedAt = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedBy = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UpdatedAt = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedBy = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -34,10 +34,10 @@ namespace mi_kan_project_backend.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ClassRoomNameTh = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ClassRoomNameEn = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedAt = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedBy = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UpdatedAt = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedBy = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -64,10 +64,10 @@ namespace mi_kan_project_backend.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     MultipleIntelligencesName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedAt = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedBy = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UpdatedAt = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedBy = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -98,10 +98,10 @@ namespace mi_kan_project_backend.Migrations
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedAt = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedBy = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UpdatedAt = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedBy = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -116,10 +116,10 @@ namespace mi_kan_project_backend.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     SchoolYearNameTh = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SchoolYearNameEn = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedAt = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedBy = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UpdatedAt = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedBy = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -134,10 +134,10 @@ namespace mi_kan_project_backend.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     TermNameTh = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TermNameEn = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedAt = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedBy = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UpdatedAt = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedBy = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -151,10 +151,10 @@ namespace mi_kan_project_backend.Migrations
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     TrainingCategoryName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CreatedAt = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedBy = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UpdatedAt = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedBy = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -171,13 +171,14 @@ namespace mi_kan_project_backend.Migrations
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     SchoolId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     RoleId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreatedAt = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedBy = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UpdatedAt = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedBy = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -277,10 +278,10 @@ namespace mi_kan_project_backend.Migrations
                     Location = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     TrainingCategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    CreatedAt = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    CreatedBy = table.Column<DateTime>(type: "datetime2", nullable: true),
-                    UpdatedAt = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    UpdatedBy = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    CreatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: true),
+                    UpdatedBy = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     IsActive = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
@@ -337,8 +338,8 @@ namespace mi_kan_project_backend.Migrations
                 columns: new[] { "Id", "ClassRoomNameEn", "ClassRoomNameTh", "CreatedAt", "CreatedBy", "IsActive", "UpdatedAt", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { new Guid("a41d7d77-f753-41c7-8398-d63517a0dee3"), null, "2", null, new DateTime(2024, 5, 5, 11, 39, 21, 240, DateTimeKind.Local).AddTicks(7173), true, null, null },
-                    { new Guid("cf7e4c43-1c38-4251-9b68-d319eb963d19"), null, "1", null, new DateTime(2024, 5, 5, 11, 39, 21, 240, DateTimeKind.Local).AddTicks(7171), true, null, null }
+                    { new Guid("2747d6a6-c58e-4d82-9c76-e17971965921"), null, "2", new DateTime(2024, 5, 18, 20, 37, 42, 185, DateTimeKind.Local).AddTicks(4970), null, true, null, null },
+                    { new Guid("66a933ca-2d15-4407-b0c4-5311fe8a5b2c"), null, "1", new DateTime(2024, 5, 18, 20, 37, 42, 185, DateTimeKind.Local).AddTicks(4968), null, true, null, null }
                 });
 
             migrationBuilder.InsertData(
@@ -346,8 +347,8 @@ namespace mi_kan_project_backend.Migrations
                 columns: new[] { "Id", "ClassNameEn", "ClassNameTh", "CreatedAt", "CreatedBy", "IsActive", "UpdatedAt", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { new Guid("0b91244a-9087-45a5-a80a-9d4c88bb091d"), null, "1", null, new DateTime(2024, 5, 5, 11, 39, 21, 240, DateTimeKind.Local).AddTicks(7076), true, null, null },
-                    { new Guid("1124cf5a-6d96-4a05-844c-8a3a80c8e81c"), null, "2", null, new DateTime(2024, 5, 5, 11, 39, 21, 240, DateTimeKind.Local).AddTicks(7087), true, null, null }
+                    { new Guid("d259fce9-1a8d-4bce-8758-37fc0189f8e6"), null, "1", new DateTime(2024, 5, 18, 20, 37, 42, 185, DateTimeKind.Local).AddTicks(4836), null, true, null, null },
+                    { new Guid("f3355f53-1d76-4092-8315-a2e65ca7fe94"), null, "2", new DateTime(2024, 5, 18, 20, 37, 42, 185, DateTimeKind.Local).AddTicks(4852), null, true, null, null }
                 });
 
             migrationBuilder.InsertData(
@@ -355,8 +356,8 @@ namespace mi_kan_project_backend.Migrations
                 columns: new[] { "Id", "GenderNameEn", "GenderNameTh" },
                 values: new object[,]
                 {
-                    { new Guid("62d17cf4-9130-4c0d-b7b7-66e6bc11079c"), null, "ชาย" },
-                    { new Guid("99ea90e8-c8ef-45e2-86f4-0ce3df6660e1"), null, "หญิง" }
+                    { new Guid("1bc9f8ef-d9aa-40a9-98ee-4ca146d807cb"), null, "หญิง" },
+                    { new Guid("dfc2f95f-a22a-4c77-a500-9afdabb13529"), null, "ชาย" }
                 });
 
             migrationBuilder.InsertData(
@@ -364,8 +365,8 @@ namespace mi_kan_project_backend.Migrations
                 columns: new[] { "Id", "RoleCode", "RoleName" },
                 values: new object[,]
                 {
-                    { new Guid("7789c1b7-d8a8-484f-976b-f1d84c96e577"), "teacher", "คุณครู" },
-                    { new Guid("e82d41dd-1060-4953-9992-ac328e07e8e1"), "admin", "ผู้ดูแลระบบ" }
+                    { new Guid("62bafb8f-84df-4850-970f-f47ddc557787"), "teacher", "คุณครู" },
+                    { new Guid("fd7b2ecf-6652-456c-9fee-6c0df9c09c74"), "admin", "ผู้ดูแลระบบ" }
                 });
 
             migrationBuilder.InsertData(
@@ -373,8 +374,8 @@ namespace mi_kan_project_backend.Migrations
                 columns: new[] { "Id", "CreatedAt", "CreatedBy", "IsActive", "SchoolYearNameEn", "SchoolYearNameTh", "UpdatedAt", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { new Guid("6122db77-715b-45fc-b1cf-255b06d53549"), null, new DateTime(2024, 5, 5, 11, 39, 21, 240, DateTimeKind.Local).AddTicks(7228), true, null, "ปีการศึกษา 1", null, null },
-                    { new Guid("d414ae8f-37ac-46e0-bb32-ca52aff65c25"), null, new DateTime(2024, 5, 5, 11, 39, 21, 240, DateTimeKind.Local).AddTicks(7229), true, null, "ปีการศึกษา 2", null, null }
+                    { new Guid("ef3c8246-35d8-4b08-9ad5-ef7f70cb0337"), new DateTime(2024, 5, 18, 20, 37, 42, 185, DateTimeKind.Local).AddTicks(5037), null, true, null, "ปีการศึกษา 1", null, null },
+                    { new Guid("f8307230-95aa-4b4f-91a5-d1910eb2da38"), new DateTime(2024, 5, 18, 20, 37, 42, 185, DateTimeKind.Local).AddTicks(5038), null, true, null, "ปีการศึกษา 2", null, null }
                 });
 
             migrationBuilder.InsertData(
@@ -382,8 +383,8 @@ namespace mi_kan_project_backend.Migrations
                 columns: new[] { "Id", "Address", "CreatedAt", "CreatedBy", "Email", "IsActive", "PhoneNumber", "SchoolNameEn", "SchoolNameTh", "UpdatedAt", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { new Guid("7ceed84b-0e3f-4d85-aeeb-ef92f1e8be38"), "Address 2", null, new DateTime(2024, 5, 5, 11, 39, 21, 240, DateTimeKind.Local).AddTicks(7218), "school02@gmail.com", true, "0777777777", null, "โรงเรียน 2", null, null },
-                    { new Guid("c3e93ba4-c4ef-40a5-8d1b-cc80f6dc8cf6"), "Address 1", null, new DateTime(2024, 5, 5, 11, 39, 21, 240, DateTimeKind.Local).AddTicks(7215), "school01@gmail.com", true, "0666666666", null, "โรงเรียน 1", null, null }
+                    { new Guid("4ffa2268-9b08-4d19-89b2-c05f5ba4ca22"), "Address 1", new DateTime(2024, 5, 18, 20, 37, 42, 185, DateTimeKind.Local).AddTicks(5019), null, "school01@gmail.com", true, "0666666666", null, "โรงเรียน 1", null, null },
+                    { new Guid("ccf7ce31-3e0e-41f6-aa3e-e9d1c1e52126"), "Address 2", new DateTime(2024, 5, 18, 20, 37, 42, 185, DateTimeKind.Local).AddTicks(5021), null, "school02@gmail.com", true, "0777777777", null, "โรงเรียน 2", null, null }
                 });
 
             migrationBuilder.InsertData(
@@ -391,8 +392,8 @@ namespace mi_kan_project_backend.Migrations
                 columns: new[] { "Id", "CreatedAt", "CreatedBy", "IsActive", "TermNameEn", "TermNameTh", "UpdatedAt", "UpdatedBy" },
                 values: new object[,]
                 {
-                    { new Guid("4a2f3794-e971-4155-bdf4-7306c22d188c"), null, new DateTime(2024, 5, 5, 11, 39, 21, 240, DateTimeKind.Local).AddTicks(7244), true, null, "เทอม 2", null, null },
-                    { new Guid("8fa58d00-5c34-4263-bd44-4961d04a8a52"), null, new DateTime(2024, 5, 5, 11, 39, 21, 240, DateTimeKind.Local).AddTicks(7242), true, null, "เทอม 1", null, null }
+                    { new Guid("211fbbaa-a7a8-4cf3-a8be-f96027527ad0"), new DateTime(2024, 5, 18, 20, 37, 42, 185, DateTimeKind.Local).AddTicks(5050), null, true, null, "เทอม 2", null, null },
+                    { new Guid("835079e8-5f10-42f6-bae7-67fdbbb72811"), new DateTime(2024, 5, 18, 20, 37, 42, 185, DateTimeKind.Local).AddTicks(5048), null, true, null, "เทอม 1", null, null }
                 });
 
             migrationBuilder.CreateIndex(

@@ -9,6 +9,8 @@ global using mi_kan_project_backend.Dtos.ClassRoom;
 global using mi_kan_project_backend.Dtos.Gender;
 global using mi_kan_project_backend.Dtos.Term;
 global using mi_kan_project_backend.Dtos.User;
+global using mi_kan_project_backend.Dtos.Student;
+
 using Microsoft.EntityFrameworkCore;
 using mi_kan_project_backend.Installers;
 using mi_kan_project_backend;
@@ -17,6 +19,7 @@ using AutoMapper;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.MyInstallerExtensions(builder);
 builder.Services.AddAutoMapper(typeof(MappingConfig));
+//builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 
@@ -28,6 +31,7 @@ try
 {
     // orm
     await context.Database.MigrateAsync();
+    await DbInitializer.Initialize(context);
 }
 catch (Exception ex)
 {

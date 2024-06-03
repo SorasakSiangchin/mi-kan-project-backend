@@ -1,8 +1,6 @@
 ﻿
-
-
 using AutoMapper;
-using mi_kan_project_backend.Dtos.Student;
+using mi_kan_project_backend.RequestHelpers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace mi_kan_project_backend.Controllers
@@ -26,7 +24,9 @@ namespace mi_kan_project_backend.Controllers
             var res = new ServiceResponse<List<Student>>();
             try
             {
-              var reult = await _studentService.GetStudentAll();
+              var reult = await _studentService
+                    .GetStudentAll();
+
               res.Data = reult;
 
               return Ok(reult);
@@ -57,9 +57,53 @@ namespace mi_kan_project_backend.Controllers
                 var student = _mapper.Map<Student>(dto);
                 student.ImageUrl = imageName;
 
+                student.CreatedBy = TokenUserId;
+
                 await _studentService.Create(student);
 
                 response.Data = student;
+
+                return Ok(response);
+            }
+            catch (Exception e)
+            {
+                response.Message = e.Message;
+                response.Success = false;
+                return BadRequest(response);
+            }
+        }
+
+        [HttpPost("[action]")]
+        public async Task<ActionResult<ServiceResponse<List<StudentDto>>>> GetStudents(StudentParams studentParams)
+        {
+            var response = new ServiceResponse<List<StudentDto>>();
+            try
+            {
+
+                var result = await _studentService.GetStudents(studentParams);
+
+                response.Data = result;
+
+                return Ok(response);
+            }
+            catch (Exception e)
+            {
+                response.Message = e.Message;
+                response.Success = false;
+                return BadRequest(response);
+            }
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<ServiceResponse<StudentDto>>> GetStudentById(string id)
+        {
+            var response = new ServiceResponse<StudentDto>();
+            try
+            {
+
+                var result = await _studentService.GetStudentById(id);
+
+                response.Data = result;
 
                 return Ok(response);
             }

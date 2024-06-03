@@ -97,6 +97,17 @@ namespace mi_kan_project_backend.Datas
                    TermNameTh = "เทอม 2"
                }
               );
+
+            modelBuilder.Entity<Term>().HasData(
+   new Term
+   {
+       TermNameTh = "เทอม 1"
+   },
+   new Term
+   {
+       TermNameTh = "เทอม 2"
+   }
+  );
         }
 
         public DbSet<Ability> Abilities { get; set; }

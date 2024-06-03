@@ -1,7 +1,6 @@
 ﻿
 using AutoMapper;
 using mi_kan_project_backend.Services.TermService;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace mi_kan_project_backend.Controllers

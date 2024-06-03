@@ -12,10 +12,10 @@ namespace mi_kan_project_backend.Models
         [Required]
         public string SchoolYearNameTh { get; set; }
         public string? SchoolYearNameEn { get; set; }
-        public string? CreatedAt { get; set; }
-        public DateTime? CreatedBy { get; set; } = DateTime.Now;
-        public string? UpdatedAt { get; set; }
-        public DateTime? UpdatedBy { get; set; }
+        public DateTime? CreatedAt { get; set; } = DateTime.Now;
+        public string? CreatedBy { get; set; }
+        public DateTime? UpdatedAt { get; set; }
+        public string? UpdatedBy { get; set; }
         public bool IsActive { get; set; } = true;
 
     }

@@ -1,4 +1,7 @@
-﻿using mi_kan_project_backend.Services.UploadFileService;
+﻿using AutoMapper;
+using mi_kan_project_backend.Extenstions;
+using mi_kan_project_backend.RequestHelpers;
+using mi_kan_project_backend.Services.UploadFileService;
 using Microsoft.EntityFrameworkCore;
 
 namespace mi_kan_project_backend.Services.StudentService
@@ -7,13 +10,16 @@ namespace mi_kan_project_backend.Services.StudentService
     {
         private readonly DataContext _context;
         private readonly IUploadFileService _uploadFileService;
+        private readonly IMapper _mapper;
 
         public StudentService(
             DataContext context ,
-            IUploadFileService uploadFileService)
+            IUploadFileService uploadFileService ,
+            IMapper mapper)
         {
             _context = context;
             _uploadFileService = uploadFileService;
+            _mapper = mapper;
         }
 
         public async Task Create(Student student)
@@ -39,6 +45,63 @@ namespace mi_kan_project_backend.Services.StudentService
         public async Task<List<Student>> GetStudentAll()
         {
             return await _context.Students.ToListAsync();
+        }
+
+        public async Task<StudentDto> GetStudentById(string id)
+        {
+            try
+            {
+                var result = await _context.Students
+                    .Include(s => s.School)
+                    .Include(s => s.Class)
+                    .Include(s => s.ClassRoom)
+                    .Include(s => s.SchoolYear)
+                    .Include(s => s.Term)
+                    .Include(s => s.Gender)
+                    .Where(s => s.IsActive)
+                    .Where(s => s.Id == Guid.Parse(id))
+                    .FirstOrDefaultAsync();
+
+                return _mapper.Map<StudentDto>(result);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                throw;
+            }
+
+        }
+
+
+        public async Task<List<StudentDto>> GetStudents(StudentParams studentParams)
+        {
+            try
+            {
+
+              var result = await _context.Students
+                    .Include(s => s.School)
+                    .Include(s => s.Class)
+                    .Include(s => s.ClassRoom)
+                    .Include(s => s.SchoolYear)
+                    .Include(s => s.Term)
+                    .Include(s => s.Gender)
+                    .FilterBySchoolId(studentParams.SchoolId)
+                    .FilterBySchoolYearId(studentParams.SchoolYearId)
+                    .FilterByTermId(studentParams.TermId)
+                    .FilterByGenderId(studentParams.GenderId)
+                    .FilterByClassRoomId(studentParams.ClassRoomId)
+                    .FilterByClassId(studentParams.ClassId)
+                    .SearchName(studentParams.SearchName)
+                    .FilterIsAction(studentParams.IsAction)
+                    .ToListAsync();
+
+                return _mapper.Map<List<StudentDto>>(result);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                throw;
+            }
         }
 
         public async Task Update(Student student)

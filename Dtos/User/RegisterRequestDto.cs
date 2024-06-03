@@ -11,6 +11,5 @@ namespace mi_kan_project_backend.Dtos.User
         public string Password { get; set; }
         public string PhoneNumber { get; set; }
         public string SchoolId { get; set; }
-        public string RoleId { get; set; }
     }
 }
