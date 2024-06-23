@@ -3,6 +3,7 @@
     public class UpdateStudentDto
     {
         public string Id { get; set; }
+        public string? Title { get; set; }
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
         public IFormFileCollection? ImageFiles { get; set; }
@@ -19,5 +20,6 @@
         public string? SchoolYearId { get; set; }
         public string? TermId { get; set; }
         public string? GenderId { get; set; }
+        public bool? IsActive { get; set; }
     }
 }

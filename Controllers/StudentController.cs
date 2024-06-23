@@ -18,25 +18,29 @@ namespace mi_kan_project_backend.Controllers
             _mapper = mapper;
         }
 
+
         [HttpGet]
-        public async Task<ActionResult<List<Student>>> GetStudentAll()
+        public async Task<ActionResult<List<StudentDto>>> GetStudentAll(string? schoolId)
         {
-            var res = new ServiceResponse<List<Student>>();
+            var response = new ServiceResponse<List<StudentDto>>();
             try
             {
+
               var reult = await _studentService
-                    .GetStudentAll();
+                    .GetStudentAll(schoolId);
 
-              res.Data = reult;
+                response.Data = reult;
 
-              return Ok(reult);
+              return Ok(response);
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
-                throw;
+                response.Message = e.Message;
+                response.Success = false;
+                return BadRequest(response);
             }
         }
+
 
         [HttpPost("[action]")]
         public async Task<ActionResult<ServiceResponse<Student>>> CreateStudent([FromForm] CreateStudentDto dto)
@@ -57,7 +61,7 @@ namespace mi_kan_project_backend.Controllers
                 var student = _mapper.Map<Student>(dto);
                 student.ImageUrl = imageName;
 
-                student.CreatedBy = TokenUserId;
+                
 
                 await _studentService.Create(student);
 
@@ -81,7 +85,7 @@ namespace mi_kan_project_backend.Controllers
             {
 
                 var result = await _studentService.GetStudents(studentParams);
-
+          
                 response.Data = result;
 
                 return Ok(response);
@@ -114,6 +118,7 @@ namespace mi_kan_project_backend.Controllers
                 return BadRequest(response);
             }
         }
+
 
 
         [HttpPost("[action]")]

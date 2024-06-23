@@ -2,7 +2,7 @@
 {
     public class RoleCode
     {
-        public static string Admin { get { return "admin"; } }
-        public static string Teacher { get { return "teacher"; } }
+        public static string Admin { get { return "ADMIN"; } }
+        public static string Teacher { get { return "TEACHER"; } }
     }
 }

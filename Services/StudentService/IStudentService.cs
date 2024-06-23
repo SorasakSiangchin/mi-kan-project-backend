@@ -1,11 +1,8 @@
-﻿
-using mi_kan_project_backend.RequestHelpers;
-
-namespace mi_kan_project_backend.Services.StudentService
+﻿namespace mi_kan_project_backend.Services.StudentService
 {
     public interface IStudentService
     {
-        Task<List<Student>> GetStudentAll();
+        Task<List<StudentDto>> GetStudentAll(string? schoolId);
         Task<List<StudentDto>> GetStudents(StudentParams studentParams);
         Task<StudentDto> GetStudentById(string id);
         Task<Student> GetStudent(string id , bool tracked = true);

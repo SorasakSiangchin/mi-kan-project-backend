@@ -11,7 +11,9 @@ namespace mi_kan_project_backend.Models
         public Guid Id { get; set; } = Guid.NewGuid();
 
         [Required]
+        [StringLength(200)]
         public string TrainingNameTh { get; set; }
+        [StringLength(200)]
         public string? TrainingNameEn { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }

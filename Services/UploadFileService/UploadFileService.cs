@@ -22,7 +22,7 @@ namespace mi_kan_project_backend.Services.UploadFileService
         {
             if (!string.IsNullOrEmpty(filename))
             {
-                var uploadPath = $"{_webHostEnvironment.WebRootPath}/images/{folderName}";
+                var uploadPath = $"{_webHostEnvironment.WebRootPath}/images/{folderName}/";
                 var fullName = uploadPath + filename;
 
                 if (File.Exists(fullName)) File.Delete(fullName);

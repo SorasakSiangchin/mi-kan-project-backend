@@ -3,7 +3,7 @@
     public class InfoResponseDto
     {
         public string Id { get; set; }
-        public Role? Role { get; set; }
+        public Models.Role? Role { get; set; }
 
     } 
 }

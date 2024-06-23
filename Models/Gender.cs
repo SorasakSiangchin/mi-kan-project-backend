@@ -10,7 +10,12 @@ namespace mi_kan_project_backend.Models
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public Guid Id { get; set; } = Guid.NewGuid();
         [Required]
+        [StringLength(100)]
         public string GenderNameTh { get; set; }
+        [StringLength(100)]
         public string? GenderNameEn { get; set; }
+
+        [StringLength(100)]
+        public string GenderNameInitial { get; set; } // ชื่อย่อ
     }
 }

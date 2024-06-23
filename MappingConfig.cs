@@ -16,6 +16,8 @@ namespace mi_kan_project_backend
 
             CreateMap<RegisterRequestDto, User>().ReverseMap();
 
+            CreateMap<UpdateUserDto , User>().ReverseMap();
+
             CreateMap<User, UserResponseDto>()
                 .ForMember(cnd => cnd.ImageUrl ,
                 opt => opt.MapFrom(src =>
@@ -25,6 +27,14 @@ namespace mi_kan_project_backend
                 .ForMember(cnd => cnd.ImageUrl ,
                 opt => opt.MapFrom(src =>
                         !string.IsNullOrEmpty(src.ImageUrl) ? $"{GetConfigure.StudentImageDir}/{src.ImageUrl}" : ""));
+
+            CreateMap<Ability, AbilityDto>();
+
+            CreateMap<CreateAbilityDto, Ability>();
+
+            CreateMap<UpdateAbilityDto, Ability>();
+
+            CreateMap<MultipleIntelligences, MultipleIntelligencesDto>();
         }
     }
 }

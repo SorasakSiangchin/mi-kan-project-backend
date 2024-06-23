@@ -17,7 +17,7 @@ namespace mi_kan_project_backend.Dtos.User
         public string? CreatedBy { get; set; }
         public DateTime? UpdatedAt { get; set; }
         public string? UpdatedBy { get; set; }
-        public Role Role { get; set; }
+        public Models.Role Role { get; set; }
         public Models.School School { get; set; }
     }
 }

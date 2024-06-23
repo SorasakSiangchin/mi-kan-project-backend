@@ -10,7 +10,14 @@ global using mi_kan_project_backend.Dtos.Gender;
 global using mi_kan_project_backend.Dtos.Term;
 global using mi_kan_project_backend.Dtos.User;
 global using mi_kan_project_backend.Dtos.Student;
-
+global using mi_kan_project_backend.Services.AbilityService;
+global using mi_kan_project_backend.Dtos.Ability;
+global using mi_kan_project_backend.Dtos.MultipleIntelligences;
+global using mi_kan_project_backend.Services.MultipleIntelligencesService;
+global using mi_kan_project_backend.RequestHelpers;
+global using mi_kan_project_backend.Services.ClassService;
+global using mi_kan_project_backend.Services.SchoolService;
+global using mi_kan_project_backend.Extenstions;
 using Microsoft.EntityFrameworkCore;
 using mi_kan_project_backend.Installers;
 using mi_kan_project_backend;
@@ -31,6 +38,7 @@ try
 {
     // orm
     await context.Database.MigrateAsync();
+
     await DbInitializer.Initialize(context);
 }
 catch (Exception ex)

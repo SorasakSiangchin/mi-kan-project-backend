@@ -1,4 +1,6 @@
-﻿using mi_kan_project_backend.AppHelper;
+﻿using AutoMapper;
+using mi_kan_project_backend.AppHelper;
+using mi_kan_project_backend.Models;
 using mi_kan_project_backend.Services.UploadFileService;
 using mi_kan_project_backend.Settings;
 using Microsoft.AspNetCore.Cryptography.KeyDerivation;
@@ -17,15 +19,18 @@ namespace mi_kan_project_backend.Services.UserService
         private readonly DataContext _context;
         private readonly JwtSetting _jwtSetting;
         private readonly IUploadFileService _uploadFileService;
+        private readonly IMapper _mapper;
 
         public UserService(
             DataContext context , 
             JwtSetting jwtSetting ,
-            IUploadFileService uploadFileService)
+            IUploadFileService uploadFileService ,
+            IMapper mapper)
         {
             _context = context;
             _jwtSetting = jwtSetting;
             _uploadFileService = uploadFileService;
+            _mapper = mapper;
         }
         public async Task<User> Login(LoginRequestDto login)
         {
@@ -51,6 +56,25 @@ namespace mi_kan_project_backend.Services.UserService
             }
         }
 
+        public async Task<User> ChangePassword(ChangePasswordRequestDto dto)
+        {
+            try
+            {
+                var user = await _context.Users.SingleOrDefaultAsync(e => e.Id == Guid.Parse(dto.Id));
+
+                user.Password = CreateHashPassword(dto.Password);
+
+                await _context.SaveChangesAsync();
+
+                return user;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
         public async Task Register(User user)
         {
             try
@@ -62,7 +86,7 @@ namespace mi_kan_project_backend.Services.UserService
                 user.RoleId = (await _context
                     .Roles
                     .AsNoTracking()
-                    .SingleOrDefaultAsync(e => e.RoleCode == RoleCode.Admin))
+                    .SingleOrDefaultAsync(e => e.RoleCode == RoleCode.Teacher))
                     .Id;
 
                 await _context.Users.AddAsync(user);
@@ -137,7 +161,7 @@ namespace mi_kan_project_backend.Services.UserService
                         new Claim("firstname" , user.FirstName),
                         new Claim("lastname" , user.LastName),
                         new Claim("phonenumber" , user.PhoneNumber),
-                        new Claim("schoolid" , user.SchoolId.ToString()),
+                        new Claim("schoolid" , user.SchoolId != Guid.Empty ? user.SchoolId.ToString() : ""),
                         new Claim("schoolnameth" , user.School.SchoolNameTh),
 
                     }),
@@ -219,6 +243,76 @@ namespace mi_kan_project_backend.Services.UserService
             };
 
             return account;
+        }
+
+        public async Task Update(User user)
+        {
+            try
+            {
+                _context.Update(user);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public async Task<User> GetUser(string id, bool tracked = true)
+        {
+            try
+            {
+                IQueryable<User> query = _context.Users;
+                if (!tracked) query = query.AsNoTracking();
+                return await query.FirstOrDefaultAsync(e => e.Id.Equals(Guid.Parse(id)));
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public async Task<UserResponseDto> GetUserById(Guid id)
+        {
+            try
+            {
+                var result = await _context.Users
+                    .Include(s => s.School)
+                    .Include(s => s.Role)
+                    .Where(s => s.Id == id)
+                    .FirstOrDefaultAsync();
+
+                return _mapper.Map<UserResponseDto>(result);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                throw;
+            }
+
+        }
+
+        public async Task<User?> ForgotPassword(ForgotPasswordDto dto)
+        {
+            try
+            {
+                var result = await _context.Users.SingleOrDefaultAsync(e => e.Email == dto.Email);
+                
+                if (result == null) return null;
+
+                result.Password = CreateHashPassword(dto.Password);
+
+                await _context.SaveChangesAsync();
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                throw;
+            }
         }
     }
 }

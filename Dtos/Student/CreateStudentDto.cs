@@ -4,6 +4,7 @@ namespace mi_kan_project_backend.Dtos.Student
 {
     public class CreateStudentDto
     {
+        public string? Title { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public IFormFileCollection? ImageFiles { get; set; }

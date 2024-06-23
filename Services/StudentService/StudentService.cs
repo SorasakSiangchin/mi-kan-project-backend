@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using mi_kan_project_backend.Extenstions;
-using mi_kan_project_backend.RequestHelpers;
 using mi_kan_project_backend.Services.UploadFileService;
 using Microsoft.EntityFrameworkCore;
 
@@ -42,9 +41,27 @@ namespace mi_kan_project_backend.Services.StudentService
 
         }
 
-        public async Task<List<Student>> GetStudentAll()
+        public async Task<List<StudentDto>> GetStudentAll(string? schoolId)
         {
-            return await _context.Students.ToListAsync();
+            try
+            {
+               var result = await _context.Students.Include(s => s.School)
+                    .Include(s => s.Class)
+                    .Include(s => s.ClassRoom)
+                    .Include(s => s.SchoolYear)
+                    .Include(s => s.Term)
+                    .Include(s => s.Gender)
+                    .Where(s => s.IsActive)
+                    .FilterBySchoolId(schoolId)
+                    .ToListAsync();
+
+                return _mapper.Map<List<StudentDto>>(result);
+            }
+             catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                throw;
+            }
         }
 
         public async Task<StudentDto> GetStudentById(string id)
@@ -57,8 +74,7 @@ namespace mi_kan_project_backend.Services.StudentService
                     .Include(s => s.ClassRoom)
                     .Include(s => s.SchoolYear)
                     .Include(s => s.Term)
-                    .Include(s => s.Gender)
-                    .Where(s => s.IsActive)
+                    .Include(s => s.Gender)  
                     .Where(s => s.Id == Guid.Parse(id))
                     .FirstOrDefaultAsync();
 

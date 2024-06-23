@@ -1,8 +1,5 @@
 ﻿using AutoMapper;
-
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 
 namespace mi_kan_project_backend.Controllers
 {

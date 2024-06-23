@@ -7,6 +7,8 @@ namespace mi_kan_project_backend.Dtos.Student
         public string Id { get; set; } 
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string? Title { get; set; }
+        public string FullName { get { return Title + " " + FirstName + " " + LastName; }  } 
         public string ImageUrl { get; set; }
         public DateTime Birthday { get; set; }
         public string Email { get; set; }

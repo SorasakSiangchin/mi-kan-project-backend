@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using mi_kan_project_backend.Dtos.User;
 using mi_kan_project_backend.Services.UserService;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
@@ -48,6 +49,73 @@ namespace mi_kan_project_backend.Controllers
             }
         }
 
+        // เปลี่ยน password
+        [HttpPost("[action]")]
+        public async Task<ActionResult<ServiceResponse<UserResponseDto>>> ChangePassword(ChangePasswordRequestDto dto)
+        {
+            var response = new ServiceResponse<UserResponseDto>();
+            try
+            {
+                var result = await _userService.ChangePassword(dto);
+                response.Data = _mapper.Map<UserResponseDto>(result);
+                return Ok(response);
+            }
+            catch (Exception e)
+            {
+                response.Message = e.Message;
+                response.Success = false;
+                return BadRequest(response);
+            }
+        }
+
+        // ลืม password
+        [HttpPost("[action]")]
+        public async Task<ActionResult<ServiceResponse<UserResponseDto>>> ForgotPassword(ForgotPasswordDto dto)
+        {
+            var response = new ServiceResponse<UserResponseDto>();
+            try
+            {
+                var result = await _userService.ForgotPassword(dto);
+
+                if(result == null)
+                {
+                    response.Message = "อีเมลนี้ไม่มีในระบบ!";
+                    response.Success = false;
+                    return Ok(response);
+                }
+
+                response.Data = _mapper.Map<UserResponseDto>(result);
+                return Ok(response);
+            }
+            catch (Exception e)
+            {
+                response.Message = e.Message;
+                response.Success = false;
+                return BadRequest(response);
+            }
+        }
+
+        [HttpGet("{id:guid}")]
+        public async Task<ActionResult<ServiceResponse<UserResponseDto>>> GetUserById(Guid id)
+        {
+            var response = new ServiceResponse<UserResponseDto>();
+            try
+            {
+
+                var result = await _userService.GetUserById(id);
+
+                response.Data = result;
+
+                return Ok(response);
+            }
+            catch (Exception e)
+            {
+                response.Message = e.Message;
+                response.Success = false;
+                return BadRequest(response);
+            }
+        }
+
         [HttpPost("[action]")]
         public async Task<ActionResult<ServiceResponse<string>>> Register([FromForm] RegisterRequestDto register)
         {
@@ -81,6 +149,61 @@ namespace mi_kan_project_backend.Controllers
             }
         }
 
+        [HttpPost("[action]")]
+        public async Task<ActionResult<ServiceResponse<UpdateUserDto>>> UpdateUser([FromForm] UpdateUserDto dto) 
+        {
+            var response = new ServiceResponse<UpdateUserDto>();
+            try
+            {
+                var result = await _userService.GetUser(dto.Id);
+                if (result == null)
+                {
+                    response.Message = "ไม่มีข้อมูลของผู้ใช้งาน";
+                    response.Success = false;
+                    return NotFound(response);
+                }
+
+                (string errorMessage, string imageName) =
+                    await _userService.UploadImage(dto.ImageFiles);
+
+                if (!string.IsNullOrEmpty(errorMessage))
+                {
+                    response.Success = false;
+                    response.Message = errorMessage;
+                    return BadRequest(response);
+                }
+
+                var student = _mapper.Map(dto, result);
+
+                if (!string.IsNullOrEmpty(imageName))
+                {
+                    await _userService.DeleteImage(result.ImageUrl);
+                    student.ImageUrl = imageName;
+                }
+                else
+                {
+                    student.ImageUrl = result.ImageUrl;
+                }
+
+                //student.Id = Guid.Parse(dto.Id);
+
+                await _userService.Update(student);
+
+                response.Data = dto;
+
+                return Ok(response);
+            }
+            catch (Exception e)
+            {
+                response.Message = e.Message;
+                response.Success = false;
+                return BadRequest(response);
+            }
+        }
+
+
+
+
         [HttpGet("[action]")]
         public async Task<ActionResult<ServiceResponse<UserResponseDto>>> Info()
         {
@@ -92,7 +215,9 @@ namespace mi_kan_project_backend.Controllers
 
                 var account = _userService.GetInfo(accessToken);
 
-                response.Data =  _mapper.Map<UserResponseDto>(account);
+               var respnseAccount =  await _userService.GetUserById(account.Id);
+
+                response.Data = respnseAccount;
 
                 return Ok(response);
             }
