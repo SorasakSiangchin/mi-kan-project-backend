@@ -10,10 +10,9 @@
                 options.AddPolicy(name: MyAllowSpecificOrigins, policy => {
 
                     policy
-                        .WithOrigins("http://localhost:3000")
+                        .WithOrigins("http://localhost:3000", "https://tee.kru.ac.th/cs63/s09/mi-kan-project/mi-kan-project-frontend" , "https://tee.kru.ac.th/cs63/s09/mi-kan-project/mi-kan-project-frontend-uat")
                         .AllowAnyHeader()
-                        .AllowAnyMethod()
-                        .AllowCredentials();
+                        .AllowAnyMethod().AllowCredentials();
                 });
             });
         }

@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using mi_kan_project_backend.Dtos.User;
 using mi_kan_project_backend.Services.UserService;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace mi_kan_project_backend.Controllers
 {
@@ -35,8 +35,10 @@ namespace mi_kan_project_backend.Controllers
 
                 response.Data = new LoginReponseDto
                 {
+                    ExpToken = GetExpToken(tokent) ,
                     Token = tokent,
                     User = _mapper.Map<UserResponseDto>(result) 
+                    
                 };
 
                 return Ok(response);
@@ -47,6 +49,14 @@ namespace mi_kan_project_backend.Controllers
                 response.Success = false;
                 return BadRequest(response);
             }
+        }
+
+        private string GetExpToken (string tokenString)
+        {
+            var token = new JwtSecurityTokenHandler().ReadToken(tokenString) as JwtSecurityToken;
+            var exp = token.Claims.First(claim => claim.Type == "exp").Value;
+
+            return exp;
         }
 
         // เปลี่ยน password
@@ -156,6 +166,7 @@ namespace mi_kan_project_backend.Controllers
             try
             {
                 var result = await _userService.GetUser(dto.Id);
+
                 if (result == null)
                 {
                     response.Message = "ไม่มีข้อมูลของผู้ใช้งาน";
@@ -211,11 +222,12 @@ namespace mi_kan_project_backend.Controllers
             try
             {
                 var accessToken = await HttpContext.GetTokenAsync("access_token");
+
                 if (accessToken == null) return Unauthorized();
 
                 var account = _userService.GetInfo(accessToken);
 
-               var respnseAccount =  await _userService.GetUserById(account.Id);
+                var respnseAccount =  await _userService.GetUserById(Guid.Parse(account.Id));
 
                 response.Data = respnseAccount;
 

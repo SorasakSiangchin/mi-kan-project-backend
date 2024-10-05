@@ -10,7 +10,7 @@
         Task<(string errorMessage, string imageName)> UploadImage(IFormFileCollection formFiles);
         Task DeleteImage(string fileName);
         Task<UserResponseDto> GetUserById(Guid id);
-        User GetInfo(string accessToken);
+        InfoResponseDto GetInfo(string accessToken);
         Task Update(User user);
         Task<User> GetUser(string id, bool tracked = true);
     }

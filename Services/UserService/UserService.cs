@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using mi_kan_project_backend.AppHelper;
+using mi_kan_project_backend.Dtos.Role;
 using mi_kan_project_backend.Models;
 using mi_kan_project_backend.Services.UploadFileService;
 using mi_kan_project_backend.Settings;
@@ -142,11 +143,14 @@ namespace mi_kan_project_backend.Services.UserService
             return hashed;
         }
 
+
+
         public string GenerateToken(User user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.UTF8.GetBytes(_jwtSetting.Key);
             var expires = DateTime.Now.AddDays(Convert.ToDouble(_jwtSetting.Expire));
+            //var expires = DateTime.Now.AddMinutes(Convert.ToDouble(_jwtSetting.Expire));
             var tokenDescriptor = new SecurityTokenDescriptor()
             {
                 Issuer = _jwtSetting.Issuer,
@@ -157,18 +161,18 @@ namespace mi_kan_project_backend.Services.UserService
                         new Claim(ClaimTypes.Email ,user.Email),
                         new Claim(ClaimTypes.Role , user.Role.RoleName),
                         new Claim("roleid" , user.Role.Id.ToString()),
-                        new Claim("imageurl" , user.ImageUrl),
+                        new Claim("imageurl" , user.ImageUrl != null ? user.ImageUrl : ""),
                         new Claim("firstname" , user.FirstName),
                         new Claim("lastname" , user.LastName),
                         new Claim("phonenumber" , user.PhoneNumber),
                         new Claim("schoolid" , user.SchoolId != Guid.Empty ? user.SchoolId.ToString() : ""),
-                        new Claim("schoolnameth" , user.School.SchoolNameTh),
-
+                        new Claim("schoolnameth" , user?.School?.SchoolNameTh != null ? user.School.SchoolNameTh : "")
                     }),
                 Expires = expires,
                 Audience= _jwtSetting.Audience,
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };
+
             var token = tokenHandler.CreateToken(tokenDescriptor);
 
             return tokenHandler.WriteToken(token);
@@ -196,10 +200,9 @@ namespace mi_kan_project_backend.Services.UserService
             await _uploadFileService.DeleteImage(fileName, "user");
         }
 
-        public User GetInfo(string accessToken)
+        public InfoResponseDto GetInfo(string accessToken)
         {
             var token = new JwtSecurityTokenHandler().ReadToken(accessToken) as JwtSecurityToken;
-
         
             var id = token.Claims.First(claim => claim.Type == "nameid").Value;
 
@@ -221,23 +224,24 @@ namespace mi_kan_project_backend.Services.UserService
 
             var schoolNameTh = token.Claims.First(claim => claim.Type == "schoolnameth").Value;
 
-            var account = new User
+
+            var account = new InfoResponseDto
             {
-                Id = Guid.Parse(id),
+                Id = id,
                 Email = email,
                 ImageUrl = imageUrl,
                 FirstName = firstName,
                 LastName = lastName,
                 PhoneNumber = phoneNumber,
-                SchoolId = Guid.Parse(schoolId),
-                School = new School
+                SchoolId = schoolId,
+                School = new SchoolResponseDto
                 {
-                    Id = Guid.Parse(schoolId),
+                    Id = schoolId,
                     SchoolNameTh = schoolNameTh
                 },
-                Role = new Role
+                Role = new RoleResponseDto
                 {
-                    Id = Guid.Parse(roleId),
+                    Id = roleId,
                     RoleName = roleName
                 }
             };

@@ -144,6 +144,16 @@ namespace mi_kan_project_backend.Controllers
                     return NotFound(response);
                 }
 
+                var verified = await _abilityService.VerifiUpdateAbility(dto);
+
+                if (!verified)
+                {
+                    response.Message = "นักเรียนมีความสามารถนี้แล้ว!";
+                    response.Success = false;
+                    response.Data = null;
+                    return Ok(response);
+                }
+
                 var ability = _mapper.Map<Ability>(dto);
                 await _abilityService.Update(ability);
 

@@ -18,6 +18,8 @@ namespace mi_kan_project_backend.Datas
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
+            // optionsBuilder.UseSqlServer("Server=10.103.0.16,1433;Database=mi-kan-project;User Id=student;Password=Cs@2700;MultipleActiveResultSets=true;TrustServerCertificate=True");
+
             optionsBuilder.UseSqlServer("Server=DESKTOP-6TJ4MKL;Database=mi-kan-project;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True");
         }
 

@@ -4,8 +4,8 @@ namespace mi_kan_project_backend.Services.AbilityService
     public interface IAbilityService
     {
         Task<List<AbilityDto>> GetAbilities(AbilityParams abilityParam);
-        Task<bool> VerifiCreateAbility (CreateAbilityDto createAbilityDto);
-
+        Task<bool> VerifiCreateAbility(CreateAbilityDto dto);
+        Task<bool> VerifiUpdateAbility(UpdateAbilityDto dto);
         Task<List<AbilityDto>> GetAbilityBySchoolId(string? schoolId = "");
         Task<AbilityDto> GetAbilityById(string id);
         Task<Ability> GetAbility(string id, bool tracked = true);

@@ -13,12 +13,12 @@ namespace mi_kan_project_backend.Models
         [Required]
         public string SchoolNameTh { get; set; }
         public string? SchoolNameEn { get; set; }
-        [Required]
-        public string Address { get;set;}
-        [Required]
-        public string Email { get; set; }
+ 
+        public string? Address { get;set;}
+      
+        public string? Email { get; set; }
         [Phone]
-        public string PhoneNumber { get; set; } = string.Empty;
+        public string? PhoneNumber { get; set; } = string.Empty;
         public DateTime? CreatedAt { get; set; } = DateTime.Now;
         public string? CreatedBy { get; set; }
         public DateTime? UpdatedAt { get; set; }

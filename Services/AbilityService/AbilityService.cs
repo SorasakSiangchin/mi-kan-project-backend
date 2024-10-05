@@ -245,6 +245,7 @@ namespace mi_kan_project_backend.Services.AbilityService
                     .FilterByStudentName(abilityParam.StudentName)
                     .FilterByMultipleIntelligencesId(abilityParam.MultipleIntelligencesId)
                     .FilterByClassId(abilityParam.ClassId)
+                    .Where(a => a.Student.IsActive)
                     .ToListAsync();
 
                 return _mapper.Map<List<AbilityDto>>(result);
@@ -256,16 +257,37 @@ namespace mi_kan_project_backend.Services.AbilityService
             }
         }
 
-        public async Task<bool> VerifiCreateAbility(CreateAbilityDto createAbilityDto)
+        public async Task<bool> VerifiCreateAbility(CreateAbilityDto dto)
         {
             try
             {
                 var result = await _context
                     .Abilities
-                    .FirstOrDefaultAsync(a => a.StudentId == Guid.Parse(createAbilityDto.StudentId)
-                    && a.MultipleIntelligencesId == Guid.Parse(createAbilityDto.MultipleIntelligencesId));
+                    .FirstOrDefaultAsync(a => a.StudentId == Guid.Parse(dto.StudentId)
+                    && a.MultipleIntelligencesId == Guid.Parse(dto.MultipleIntelligencesId));
 
                 if (result != null) return false;
+
+                return true;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+        }
+
+        public async Task<bool> VerifiUpdateAbility(UpdateAbilityDto dto)
+        {
+            try
+            {
+                var result = await _context
+                    .Abilities
+                    .AsNoTracking()
+                    .FirstOrDefaultAsync(a => a.StudentId == Guid.Parse(dto.StudentId)
+                    && a.MultipleIntelligencesId == Guid.Parse(dto.MultipleIntelligencesId));
+
+                if (result != null && result.Id != Guid.Parse(dto.Id)) return false;
 
                 return true;
             }

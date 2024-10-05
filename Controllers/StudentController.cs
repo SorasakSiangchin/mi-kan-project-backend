@@ -1,6 +1,5 @@
 ﻿
 using AutoMapper;
-using mi_kan_project_backend.RequestHelpers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace mi_kan_project_backend.Controllers
@@ -60,8 +59,6 @@ namespace mi_kan_project_backend.Controllers
 
                 var student = _mapper.Map<Student>(dto);
                 student.ImageUrl = imageName;
-
-                
 
                 await _studentService.Create(student);
 

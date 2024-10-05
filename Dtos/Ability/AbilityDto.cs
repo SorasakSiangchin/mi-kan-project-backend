@@ -5,6 +5,7 @@
         public Guid Id { get; set; } 
         public Guid MultipleIntelligencesId { get; set; } // พหุปัญญา
         public string SchoolYear { get; set; } // ปีการศึกษา
+        public string? ReasonNote { get; set; }
         public int Score { get; set; }
         public bool IsActive { get; set; }
         public Guid StudentId { get; set; } // นักเรียน

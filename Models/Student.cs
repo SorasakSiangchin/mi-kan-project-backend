@@ -19,12 +19,12 @@ namespace mi_kan_project_backend.Models
         public string LastName { get; set; }
         public string ImageUrl { get; set; } = string.Empty;
         public DateTime Birthday { get; set; }
-        [Required]
+        //[Required]
         [StringLength(200)]
-        public string Email { get; set; } 
+        public string? Email { get; set; } 
         [Phone]
-        public string PhoneNumber { get; set; } = string.Empty;
-        public string Address { get; set; } = string.Empty;
+        public string? PhoneNumber { get; set; }
+        public string? Address { get; set; } 
         [StringLength(200)]
         public string IdCard { get; set; } // บัตรประชาชน
         [StringLength(200)]

@@ -39,6 +39,9 @@ namespace mi_kan_project_backend.Migrations
                     b.Property<Guid>("MultipleIntelligencesId")
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("ReasonNote")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("SchoolYear")
                         .HasColumnType("nvarchar(max)");
 
@@ -232,7 +235,6 @@ namespace mi_kan_project_backend.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Address")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("CreatedAt")
@@ -242,14 +244,12 @@ namespace mi_kan_project_backend.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
 
                     b.Property<string>("PhoneNumber")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SchoolNameEn")
@@ -310,7 +310,6 @@ namespace mi_kan_project_backend.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Address")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Birthday")
@@ -329,7 +328,6 @@ namespace mi_kan_project_backend.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
@@ -364,7 +362,6 @@ namespace mi_kan_project_backend.Migrations
                         .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("PhoneNumber")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Religion")
